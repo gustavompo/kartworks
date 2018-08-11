@@ -1,0 +1,162 @@
+{
+  "status_code": 200,
+  "result": {
+    "atualizado_em": "2017-03-08T14:35:30.416Z",
+    "mensagem": "Obteve um total de 40 pontos na validação.",
+    "nome": "consultaPessoaDefault",
+    "numero": "99988855-0000-aaaa-abcd-123456789012",
+    "resultado": "40",
+    "status": "processando",
+    "cpf": {
+      "numero": "111.222.333-88",
+      "nome": "John Doe",
+      "data_de_nascimento": "19/04/1992",
+      "cpf_situacao_cadastral": "REGULAR",
+      "cpf_data_de_inscricao": "1995",
+      "cpf_digito_verificador": "00",
+      "cpf_anterior_1990": "N",
+      "ano_obito": "2011"
+    },
+    "veiculo": {
+      "placa": "IDW0011",
+      "renavam": "1079993743",
+      "documento_proprietario": "081.344.499-42",
+      "nome_proprietario": "HUGO LUIS DE OLIVEIRA",
+      "tipo": "AUTOMOVEL",
+      "especie": "PASSAGEIRO",
+      "carroceria": "NÃO APLICAVEL",
+      "categoria": "PARTICULAR",
+      "combustivel": "ALCOOL/GASOLINA ",
+      "marca": "GM",
+      "modelo": "ZAFIRA CD",
+      "ano_fabricacao": "2015",
+      "ano_modelo": "2016",
+      "cor": "PRATA",
+      "lotacao": "5",
+      "capacidade_carga": "0,70",
+      "potencia": "155",
+      "cilindradas": "1400"
+    },
+    "cnh": {
+      "categoria": "B",
+      "data_emissao": "26/08/2014",
+      "data_validade": "18/08/2019",
+      "nome": "RAFAEL DOS SANTOS",
+      "nome_mae": "MARINA DOS SANTOS",
+      "numero": "0935355567",
+      "numero_registro": "00869189293",
+      "numero_seguranca": "14199673687"
+    },
+    "infracoes": {
+      "itens": [
+        {
+          "agente_emissor": "SMTR-MULTA MUNICIPIO",
+          "ait": "B66487112",
+          "amparo_legal": "ART 184 INC III",
+          "data_notificacao": "29/11/2016",
+          "data_vencimento": "23/01/2017",
+          "codigo": "65992",
+          "descricao": "CONDUZIR O VEICULO REGISTRADO QUE NAO ESTEJA DEVIDAMENTE LICENCIADO",
+          "emitido_em": "21/10/2016",
+          "fonte": "PontosDetranRJService",
+          "gravidade": "GRAVÍSSIMA",
+          "local": "ESTRADA DA BARRA DA TIJUCA 50 RIO DE JANEIRO",
+          "nit": "66892203",
+          "orgao_autuador": "DETRAN",
+          "orgao_emissor": "P.M RIO DE JANEIRO",
+          "placa": "MAT2221",
+          "pontos": "4",
+          "processo": "8371733",
+          "protocolo": "90a0.acd0.ce69.d3b4.",
+          "renainf": "V012935567",
+          "responsavel_pontos": "RODRIGO NOGUEIRA DE LIMA",
+          "status_de_pagamento": "PENALIDADE - NÃO PAGA TRANSITADO EM JULGADO",
+          "uf": "SP",
+          "valor_original": "130,16",
+          "valor_pago": "130,16"
+        }
+      ]
+    },
+    "processos": {
+      "itens": [
+        {
+          "acao": "Cível Execução de Título Extrajudicial->Processo de Execução->PROCESSO CÍVEL E DO TRABALHO",
+          "arquivamento": {
+            "caixa": "20113461188",
+            "estante": "19",
+            "livro": "Feitos Cíveis",
+            "local": "AUTOS RETORNADOS AO CARTÓRIO",
+            "localizador": "11222A14HA",
+            "maco": "6451",
+            "prateleira": "M"
+          },
+          "assistencia": "Paga",
+          "assunto": "Dano Moral",
+          "classe": "Procedimento Comum",
+          "data_de_ajuizamento": "10/11/2011",
+          "data_de_distribuicao": "16/05/2012 16:38",
+          "data_de_julgamento": "21/01/2014",
+          "data_de_recebimento": "22/03/2017",
+          "fonte": "ProcessosTJSP",
+          "identificacao": {
+            "ano": "122/2011",
+            "controle": "99AUK18A",
+            "guia_inicial": "201213302805",
+            "numero": "0000167-59.2014.8.25.0000"
+          },
+          "impedimento": "NÃO",
+          "instancia": "2",
+          "juiz": "Márcia Alves de Mello",
+          "localizacao": {
+            "bairro": "CASA VERDE",
+            "cep": "02514000",
+            "cidade": "SAO PAULO",
+            "comarca": "ANAPOLIS -6A VARA CIVEL",
+            "complemento": "APT 609",
+            "endereco": "Av. Erasmo Braga 155 Salas 310B,312Be314B ",
+            "estado": "SP",
+            "foro": "1ª Vara do Juizado Especial Cível - Foro de Guarulhos",
+            "logradouro": "R DAS AVES",
+            "lotacao": "Segunda Vara",
+            "municipio": "SAO PAULO",
+            "numero": "677",
+            "oficio": "3º Ofício de Registro de Distribuição",
+            "vara": "8º Juizado Especial Cível"
+          },
+          "natureza": "Cível Comum",
+          "numero": "0001951-64.1996.8.18.0140",
+          "observacoes": "",
+          "partes": [
+            {
+              "cnpj": "21.665.555/0001-02",
+              "cpf": "111.111.222-99",
+              "data_de_nascimento": "11/08/1985",
+              "nome": "AUTOMOVEIS COMERCIO LTDA",
+              "rg": "126291/RR",
+              "sexo": "Masculino",
+              "tipo": "Pessoa",
+              "titulo": "Exectdo"
+            }
+          ],
+          "peticao_inicial": "201200568578",
+          "segredo": "NÃO",
+          "sigiloso": "NÃO",
+          "situacao": "Arquivado - Guia remetida a VEP",
+          "tramitacao_preferencial": "Não",
+          "url": "http://www.tjrs.jus.br/site_php/consulta/consulta_processo.php?PARAMETROS",
+          "valor": "$15,200.00"
+        }
+      ]
+    },
+    "certidoes_negativas": {
+      "itens": [
+        {
+          "criado_em": "2017-04-26T21:40:03.300Z",
+          "fonte": "TRTSP",
+          "nada_consta": true,
+          "protocolo": "128719836/2017"
+        }
+      ]
+    }
+  }
+}

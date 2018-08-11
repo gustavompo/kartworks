@@ -1,0 +1,44 @@
+db:
+  image: postgres:9.6-alpine
+  ports:
+   - "5432"
+  environment:
+    - POSTGRES_DB=background_check
+    - POSTGRES_USER=developer
+    - POSTGRES_PASSWORD=secret
+
+db_test:
+  image: postgres:9.6-alpine
+  ports:
+    - "5432"
+  environment:
+    - POSTGRES_DB=background_check
+    - POSTGRES_USER=developer
+    - POSTGRES_PASSWORD=secret
+
+aws:
+  image: pafortin/goaws
+  ports:
+    - 9324
+    - 9292
+  volumes:
+    - ./conf/goaws.yml:/conf/goaws.yaml
+
+setup:
+  image: 99taxis/activator
+  command: echo "OK"
+
+web:
+  image: 99taxis/activator
+  links:
+    - db:db
+    - aws:aws
+  ports:
+    - 9000:9000
+  environment:
+    - ENV_NAME=test
+    - TEST_DATABASE_URL=postgres://developer:secret@db:5432/background_check
+  volumes:
+    - ./:/app
+    - ~/.ivy2:/root/.ivy2
+    - ~/.m2:/root/.m2

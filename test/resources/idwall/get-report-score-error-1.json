@@ -1,0 +1,8 @@
+{
+  "status_code": 200,
+  "result": {
+    "numero": "99988855-0000-aaaa-abcd-123456789012",
+    "resultado": "-1",
+    "mensagem": "Some message"
+  }
+}
