@@ -1,4 +1,4 @@
 
 GET         /healthCheck                      controllers.HealthCheckController.healthCheck
 
-POST        /api/kart/report/:strategy        controllers.KartReportController.report(strategy: String)
+POST        /api/kart/report/:strategy        controllers.RaceReportController.report(strategy: String)

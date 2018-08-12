@@ -11,12 +11,13 @@ import scalacache.modes.sync._
 
 /**
   * There is no explicit documentation on the test for exactly what is the end of the race for each pilot.
-  * Here it's assumed that, given the winner finished the race (a log entry for the 4th lap), all other pilots will still finish their last lap and that lap will be considered in all calculations
+  * It's assumed that, given the winner finished the race (a log entry for the 4th lap),
+  * all other pilots will still finish their last lap and that lap will be considered in all calculations
   */
 @Singleton
 class LastLapFinder @Inject()(
     accumulator: LapEventAccumulator
-) extends MiddlewareReportTransform[LapLogEntry, CumulativeLapEntry] {
+) extends MiddleLayerTransform[LapLogEntry, CumulativeLapEntry] {
   implicit val cache = CaffeineCache[List[CumulativeLapEntry]]
 
   override def map(laps: List[LapLogEntry]): List[CumulativeLapEntry] = memoizeSync(Some(2 minutes)) {

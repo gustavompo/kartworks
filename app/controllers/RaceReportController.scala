@@ -5,7 +5,7 @@ import scala.concurrent.ExecutionContext
 import play.api.libs.json.Json
 import play.api.mvc._
 
-import controllers.validation.{ LapLogEntryValidation, StrategiesNameValidation }
+import controllers.validation.{ LapLogEntryValidation, StrategyNameValidation }
 import javax.inject.{ Inject, Singleton }
 import reports.strategies._
 import reports.transforms.LastLapFinder
@@ -13,15 +13,15 @@ import scala.collection.JavaConverters._
 
 
 @Singleton
-class KartReportController @Inject()(
+class RaceReportController @Inject()(
     validation: LapLogEntryValidation,
     parse: PlayBodyParsers,
     lastLapFinder: LastLapFinder,
-    strategiesValidation: StrategiesNameValidation,
-    rawStrategies: java.util.Set[ReportStrategy]
+    strategiesValidation: StrategyNameValidation,
+    injectedStrategies: java.util.Set[ReportStrategy]
 )(implicit ec: ExecutionContext) extends InjectedController {
 
-  implicit val strategies = rawStrategies.asScala.map(s => (s.name, s)).toMap
+  implicit val strategies = injectedStrategies.asScala.map(s => (s.name, s)).toMap
 
   def report(strategy: String) = Action(parseLapLogEntries) { req =>
     strategiesValidation.defineValidateStrategies(strategy) match {

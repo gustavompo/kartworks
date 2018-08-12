@@ -10,7 +10,7 @@ import play.api.test.{ FakeRequest, Injecting }
 
 import reports.strategies.DefaultReportStrategy
 
-class KartReportControllerSpec extends PlaySpec with GuiceOneAppPerSuite with Injecting {
+class RaceReportControllerSpec extends PlaySpec with GuiceOneAppPerSuite with Injecting {
 
   implicit lazy val mat: Materializer = app.materializer
 
@@ -20,7 +20,7 @@ class KartReportControllerSpec extends PlaySpec with GuiceOneAppPerSuite with In
     "NOT_FOUND given an invalid strategy" in {
       val strategy = "abc"
       val request = FakeRequest(POST, "").withTextBody(testBodySample)
-      val result = call(inject[KartReportController].report(strategy), request)
+      val result = call(inject[RaceReportController].report(strategy), request)
       status(result) mustEqual NOT_FOUND
       contentAsString(result) must fullyMatch regex s"Invalid strategy \\[$strategy\\].+"
     }
@@ -28,14 +28,14 @@ class KartReportControllerSpec extends PlaySpec with GuiceOneAppPerSuite with In
     "BAD_REQUEST given an invalid content" in {
       val invalidContent = "sad_content"
       val request = FakeRequest(POST, "").withTextBody(s"first line\n $invalidContent")
-      val result = call(inject[KartReportController].report(defaultStrategy.name), request)
+      val result = call(inject[RaceReportController].report(defaultStrategy.name), request)
       status(result) mustEqual BAD_REQUEST
       contentAsString(result) must include(invalidContent)
     }
 
     "OK given a valid request" in {
       val request = FakeRequest(POST, "").withTextBody(testBodySample)
-      val result = call(inject[KartReportController].report(defaultStrategy.name), request)
+      val result = call(inject[RaceReportController].report(defaultStrategy.name), request)
       status(result) mustEqual OK
       (contentAsJson(result) \ "reports" \ 0 \ "content" \ 0 \ "position").as[Int] mustEqual 1
     }

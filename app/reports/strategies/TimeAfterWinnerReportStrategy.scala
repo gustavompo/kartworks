@@ -16,16 +16,19 @@ class TimeAfterWinnerReportStrategy @Inject()(
   def name = "time-after-winner"
 
   override def innerCreateReport(laps: List[LapLogEntry]): JsValue = {
-    val lastLaps = lastLapFinder.map(laps).sortBy(_.totalTime.getMillis)
-    val winner = lastLaps.minBy(_.totalTime.getMillis)
-    val reportItems = lastLaps.map { lap =>
-      Json.obj(
-        "pilotNumber" -> lap.lapEvent.carNumber,
-        "name" -> lap.lapEvent.pilotName,
-        "timeAfterWinner" -> lap.totalTime.minus(winner.totalTime).toString
-      )
+    if (laps.isEmpty) JsArray(Nil)
+    else {
+      val lastLaps = lastLapFinder.map(laps).sortBy(_.totalTime.getMillis)
+      val winner = lastLaps.head
+      val reportItems = lastLaps.map { lap =>
+        Json.obj(
+          "pilotNumber" -> lap.lapEvent.carNumber,
+          "name" -> lap.lapEvent.pilotName,
+          "timeAfterWinner" -> lap.totalTime.minus(winner.totalTime).toString
+        )
+      }
+      JsArray(reportItems)
     }
-    JsArray(reportItems)
   }
 }
 

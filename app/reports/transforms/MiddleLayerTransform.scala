@@ -1,6 +1,6 @@
 package reports.transforms
 
-trait MiddlewareReportTransform[I, O] {
+trait MiddleLayerTransform[I, O] {
   def map(items: List[I]): List[O]
 }
 
