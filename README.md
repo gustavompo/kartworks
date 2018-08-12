@@ -1,6 +1,6 @@
-#kart works
+# kart works
 
-##Quick overview
+## Quick overview
 - This is an API, standard play framework application
 - The main (and only useful) controller is the `controllers.RaceReportController`
 - A term that is extensively used in this doc is `report`. It's basically an abstraction of feature  asked in the test proposal. `Report Strategy`'s are the components that generate the reports. It's really easy for introducing new reports, just create one within the `reports.strategies` package and inject it in the `Module`.
@@ -9,38 +9,38 @@
 
 
 
-##Main proposed goals
+## Main proposed goals
 
-####Fault tolerant by design
+#### Fault tolerant by design
 Taking advantage of the rich scala libs, the validations and error are considered as an expected flow, that way the code is explicitly showing failure prone transformations. An example of it in code is the error propagation on some key points of the application.
 Of course there may be unhandled cases and uncovered scenarios, but the idea was not to focus only on this topic and make an ultimate failproof application 
 
-####Low incidental code complexity
+#### Low incidental code complexity
 (https://pressupinc.com/blog/2014/05/root-causes-software-complexity/)
 First of all I need to start stating that the problem to be solved itself was really simple and with a dozen lines of code all functional requirements could have been achieved.
 Anyway, in order to demonstrate some design points, it have been considerably "over engineered". In a real life project, I'd definitely argue if all burden added to solve this simple problem was really needed.
 Acknowledging that, my goal regarding not adding incidental code complexity is present in all the main `core business` related code.
 
-#####Parsing the input file example
+##### Parsing the input file example
 Parsing an input text can become really complex and mainly error prone. I used mainly regexes on parsing and validation. 
 Well, in fact some developers may hate regexes and find it all too complex, and to avoid that I let specific patterns for each column, so one can read/understand/modify the pattern for each column without getting a massive headache.
 ![p](https://i.imgur.com/9I4HN0N.png)
 
-###Simple and extensible reports 
+### Simple and extensible reports 
 This is the main design goal on this project. The idea was to have:
 - A extensible architecture where reports could be easily added
 - Avoid code duplication, and reuse common logic for all possible reports
 - (again) Avoid incidental complexity
 
 To achieve that there are three main concepts:
-#####1) Shared Intermediate layer `transforms`
+##### 1) Shared Intermediate layer `transforms`
 I added a composable intermediate layer, internally called `transforms`. Those transforms basically process/aggregate/enrich the input lap log entries so the report classes have more cleaner and easy to understand code
 That way, reports can be composed with transforms and do some really simple logic, bellow an example:
 
-#####2) Common interface for all reports
+##### 2) Common interface for all reports
 Reports are basically a transformation of some data into an output format, so is the `common report interface`. Using a common interface it becomes possible to add as many features as needed without having the need to add specific handling and merging code for each new one.
 
-#####3) "End-to-end composability"
+##### 3) "End-to-end composability"
 Well, no one likes having to refactor all layers of the application when a simple change or new feature is needed, right? To avoid this, the design allows a new report to be added simply doing two things:
 - Extend the `ReportStrategy` trait
 - Inject it using `Module`
@@ -53,14 +53,14 @@ This is the whole code for this report
 ![p](https://i.imgur.com/PbT7OO4.png)
 All reports classes have less than 30 LoC
 
-##Running the application
+## Running the application
 - Import it in your IDE as an SBT project
 - RUN (it will be available in the 9000 port)
 
-##Testing
+## Testing
 - Simply run `sbt test` in the project root directory
 
-##Consuming the API
+## Consuming the API
 The only API in the project, apart from the `healthCheck` endpoint is the report creation one.
 
 `http://localhost:9000/api/kart/report/{report_name_separated_by_comma}`
