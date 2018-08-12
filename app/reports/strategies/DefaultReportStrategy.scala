@@ -4,7 +4,7 @@ import play.api.libs.json.{ JsArray, JsValue, Json }
 
 import com.google.inject.multibindings.ProvidesIntoSet
 
-import javax.inject.{ Inject, Singleton }
+import javax.inject.Inject
 import models.LapLogEntry
 import reports.transforms.LastLapFinder
 
