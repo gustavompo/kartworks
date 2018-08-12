@@ -32,7 +32,9 @@ libraryDependencies ++= Seq(
   "org.postgresql" % "postgresql" % "9.4.1212",
   "org.mockito" % "mockito-core" % "2.8.9" % Test,
   "org.scalatestplus.play" %% "scalatestplus-play" % "3.1.2" % Test,
-  "com.github.cb372" %% "scalacache-caffeine" % "0.22.0"
+  "com.github.cb372" %% "scalacache-caffeine" % "0.22.0",
+  "net.codingwell" %% "scala-guice" % "4.2.1",
+  "com.typesafe.akka" %% "akka-testkit" % "2.5.14"
 )
 
 

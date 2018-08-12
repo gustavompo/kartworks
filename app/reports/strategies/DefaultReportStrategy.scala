@@ -1,24 +1,22 @@
-package strategies
-
-import org.joda.time.Duration
+package reports.strategies
 
 import play.api.libs.json.{ JsArray, JsValue, Json }
 
-import controllers.LapEvent
-import javax.inject.Inject
+import com.google.inject.multibindings.ProvidesIntoSet
 
+import javax.inject.{ Inject, Singleton }
+import models.LapLogEntry
+import reports.transforms.LastLapFinder
 
-case class CumulativeLapEvent(lapEvent: LapEvent, totalTime: Duration, avgSpeed: Double)
-
-@Inject
-class DefaultReportStrategy(
+@ProvidesIntoSet
+class DefaultReportStrategy @Inject()(
     lastLapFinder: LastLapFinder
 ) extends ReportStrategy {
 
   def name = "default"
 
-  override def innerCreateReport(cumulativeEvents: List[LapEvent]): JsValue = {
-    val lastLaps = lastLapFinder.map(cumulativeEvents)
+  override def innerCreateReport(laps: List[LapLogEntry]): JsValue = {
+    val lastLaps = lastLapFinder.map(laps)
     val sorted = lastLaps.sortBy(_.totalTime.getMillis)
     val reportItems = ((1 to sorted.size) zip sorted).map {
       case (position, lap) => Json.obj(

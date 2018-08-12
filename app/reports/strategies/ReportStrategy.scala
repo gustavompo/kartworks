@@ -1,15 +1,15 @@
-package strategies
+package reports.strategies
 
 import play.api.libs.json.{ JsValue, Json }
 
-import controllers.LapEvent
+import models.LapLogEntry
 
 trait ReportStrategy {
   def name: String
 
-  protected def innerCreateReport(cumulativeEvents: List[LapEvent]): JsValue
+  protected def innerCreateReport(cumulativeEvents: List[LapLogEntry]): JsValue
 
-  def createReport(cumulativeEvents: List[LapEvent]) = {
+  def createReport(cumulativeEvents: List[LapLogEntry]) = {
     Json.obj(
       "reportName" -> name,
       "content" -> innerCreateReport(cumulativeEvents)
