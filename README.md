@@ -53,6 +53,10 @@ This is the whole code for this report
 ![p](https://i.imgur.com/PbT7OO4.png)
 All reports classes have less than 30 LoC
 
+## And finally (before you can run it), what points WERE NOT focused on this solution
+- **Performance**: I found no strong reason to add a performance improvement that could lead to a good case for it.
+- **Ultimate layer segregation** - well, in some cases there may be room for the application of several layers of DTOs, for in, out, middle, etc. Although this approach itself may be questionable, to let the solution straighforward, I reused some models from different layers and also not forgetting to mention the usage of JSON within the application. This was definitely to avoid a massive overengineering to the project, also to avoid have too much effort on things that do not aggregate too much on the overall solution. I always keep in mind that, those minor points can be refactored at any time.
+
 ## Running the application
 - Import it in your IDE as an SBT project
 - RUN (it will be available in the 9000 port)
